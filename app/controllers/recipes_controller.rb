@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = FoodService.get_recipes(params[:search])
+    @recipes = FoodService.get_recipes(params[:search])    
   end
 
   private

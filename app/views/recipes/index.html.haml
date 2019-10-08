@@ -7,6 +7,8 @@
 
 - if @recipes.nil?
   %p Please search for ingredient
+- elsif @recipes == 'error' 
+  %p There is no recipes with that ingredient
 - else
   - @recipes.each do |recipe|
     %h2= recipe["title"]

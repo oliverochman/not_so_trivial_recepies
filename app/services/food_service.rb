@@ -17,22 +17,22 @@ module FoodService
 
       if recipes == []
         "error"
-      else
+      else        
         recipes
       end
     end
   end
 
-  def self.get_single_recipe(query)
+  def self.get_ingredients(id)
     response = RestClient.get(
-      'https://api.spoonacular.com/recipes/324694/analyzedInstructions',
+      "https://api.spoonacular.com/recipes/#{id}/information",
       {
         params: {
-          apiKey: Rails.application.credentials.food_api[:api_key],
-          id: query
+          apiKey: Rails.application.credentials.food_api[:api_key]
         }
       }
     )
-    recipes = JSON.parse(response)
+
+    recipe = JSON.parse(response)
   end
 end

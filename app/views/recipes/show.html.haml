@@ -1,4 +1,10 @@
-%p
-  %strong Title:
-  = @recipe.title
+%h1= @recipe['title']
+
+- if @recipe['analyzedInstructions'] == []
+  %p There is no intructions for this item
+- else
+  - @recipe['analyzedInstructions'].each do |instruction|
+    - instruction['steps'].each do |step|
+      %p= step['step']
+
 = link_to 'Back', root_path

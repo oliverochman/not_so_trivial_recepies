@@ -11,4 +11,4 @@
   %p There is no recipe with that ingredient
 - else
   - @recipes.each do |recipe|
-    %h2= link_to recipe["title"], recipe_path(recipe)
+    %h2= link_to recipe["title"], recipe_path(recipe['id'], title: recipe['title'])

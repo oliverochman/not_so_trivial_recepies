@@ -20,6 +20,16 @@ Before '@get_recipes' do
     query: {
       ingredients: "apples",
       apiKey: Rails.application.credentials.food_api[:api_key]
-    }).
+    }
+  ).
   to_return(status: 200, body: Rails.root.join('features', 'support', 'fixtures', 'food_api_response.json').read, headers: {})
-end 
+
+
+  stub_request(:get, "https://api.spoonacular.com/recipes/936707/information").
+  with(
+    query: {
+      apiKey: Rails.application.credentials.food_api[:api_key]
+    }
+  ).
+  to_return(status: 200, body: Rails.root.join('features', 'support', 'fixtures', 'dried_apples_api_response.json').read, headers: {})
+end

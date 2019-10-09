@@ -4,7 +4,11 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = FoodService.get_single_recipe(params[:search])
+    @recipe = FoodService.get_ingredients(params[:id])
+    
+    if @recipe.nil?
+      redirect_to root_path, notice: "There is no intructions available for this dish"
+    end
   end
 
   private
